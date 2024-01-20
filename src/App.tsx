@@ -1,26 +1,80 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
-function App() {
+type Wine = {
+  id: number;
+  name: string;
+  year: number;
+  variety: string;
+};
+
+const App = () => {
+  const [wines, setWines] = useState<Wine[]>([
+    {
+    id: 1,
+    name: "title",
+    year: 2004,
+    variety: "content",
+
+  },
+
+  {
+    id: 1,
+    name: "title",
+    year: 2004,
+    variety: "content",
+
+  },
+
+  {
+    id: 1,
+    name: "title",
+    year: 2004,
+    variety: "content",
+
+  },
+
+  {
+    id: 1,
+    name: "title",
+    year: 2004,
+    variety: "content",
+
+  },
+])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <form className="note-form">
+        <input
+          placeholder="Wine name"
+          required
+        ></input>
+        <input
+          placeholder="year"
+          type="number"
+          minLength={4}
+          maxLength={4}
+          required
+        ></input>
+        <input 
+          placeholder="variety"
+          type="text"
+          required
+        ></input>
+        <button className="submit">Save selection</button>
+      </form>
+      <div className="notes-grid">
+        {wines.map((wines) => (
+          <div className="note-item">
+          <button>x</button>
+         <h2>{wines.name}</h2>
+         <p>{wines.year}</p>
+         <p>{wines.variety}</p>
+        </div> 
+        ))}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
